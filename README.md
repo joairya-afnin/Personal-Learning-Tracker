@@ -11,7 +11,6 @@ A simple, aesthetic, and responsive web application designed to help me build co
 - **Daily Habit Tracker** — Check off completed habits and monitor daily completion progress.
 - **Monthly Task Tracker** — View daily records and monthly completion percentages for each habit.
 - **Progress Visualization** — Compare habit completion rates and review overall monthly performance.
-- **CSV Export** — Export your tracking data for further analysis.
 - **Responsive Design** — A clean interface designed to work across different screen sizes.
 - **Local Data Storage** — Keep track of your progress on your device.
 
