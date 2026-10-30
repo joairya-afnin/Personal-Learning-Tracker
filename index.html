@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff5fb">
+
+  <title>My Personal Learning Tracker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- FIXED TOP NAVIGATION -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+
+      <a href="#overview" class="brand" aria-label="myFocus home">
+        <span>my<span class="brand-light">Focus</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#overview" class="nav-link active">Overview</a>
+        <a href="#calendar" class="nav-link">Calendar</a>
+        <a href="#tracker" class="nav-link">Daily Tracker</a>
+        <a href="#progress" class="nav-link">Progress</a>
+      </div>
+
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span>Saved on this device</span>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <main class="main-content">
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <div>
+        <div class="eyebrow">YOUR PERSONAL DASHBOARD</div>
+        <h1>Hello, focused learner <span class="greeting-flower">✿</span></h1>
+        <p class="muted">Make today count. Protect your attention.</p>
+      </div>
+
+      <div class="top-date">
+        <span class="date-icon">♡</span>
+        <div>
+          <b id="todayLabel">Today</b>
+          <small>One focused day at a time</small>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- OVERVIEW / HERO -->
+    <section class="hero-card" id="overview">
+      <div class="hero-copy">
+        <span class="pill">YOUR 30-DAY CHALLENGE</span>
+
+        <h2>Make room for<br><span>deep work.</span></h2>
+
+        <p>
+          Study with intention, keep distractions away,
+          and give your reading your full attention.
+        </p>
+
+        <a href="#tracker" class="hero-button">
+          Track your habits <span>↗</span>
+        </a>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-sun"></div>
+        <div class="art-blob"></div>
+        <div class="art-book book-one"></div>
+        <div class="art-book book-two"></div>
+
+        <div class="art-plant">
+          <i></i><i></i><i></i><b></b>
+        </div>
+
+        <div class="art-person">
+          <div class="person-hair"></div>
+          <div class="person-head"></div>
+          <div class="person-body"></div>
+          <div class="person-laptop"></div>
+          <div class="person-leg"></div>
+        </div>
+
+        <div class="floating-note">
+          focus<br><b>mode</b>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SUMMARY CARDS -->
+    <section class="stats-grid" aria-label="Monthly summary">
+
+      <article class="stat-card">
+        <div class="stat-top">
+          <span class="stat-icon pink-icon">✓</span>
+          <span class="stat-caption">THIS MONTH</span>
+        </div>
+        <strong id="completedCount">0<span>/</span>0</strong>
+        <p>Tasks completed</p>
+        <div class="mini-track"><span id="overallMiniBar"></span></div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-top">
+          <span class="stat-icon purple-icon">◌</span>
+          <span class="stat-caption">AVERAGE PROGRESS</span>
+        </div>
+        <strong id="averagePercent">0%</strong>
+        <p>Across your 3 habits</p>
+        <div class="mini-track"><span id="averageMiniBar"></span></div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-top">
+          <span class="stat-icon peach-icon">◎</span>
+          <span class="stat-caption">YOUR BENCHMARK</span>
+        </div>
+        <strong>90%</strong>
+        <p id="benchmarkText">Monthly target</p>
+        <div class="mini-track benchmark-track"><span></span></div>
+      </article>
+
+    </section>
+
+
+    <!-- CALENDAR + DAILY CHECKLIST -->
+    <section class="content-grid">
+
+      <!-- CALENDAR -->
+      <article class="panel calendar-panel" id="calendar">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">PLAN YOUR DAYS</span>
+            <h2>Habit Calendar</h2>
+          </div>
+
+          <div class="month-controls">
+            <button class="icon-button" id="prevMonth"
+              aria-label="Previous month">‹</button>
+
+            <label class="sr-only" for="monthPicker">Choose month</label>
+            <input type="month" id="monthPicker">
+
+            <button class="icon-button" id="nextMonth"
+              aria-label="Next month">›</button>
+          </div>
+        </div>
+
+        <div class="calendar-legend">
+          <span><i class="legend-dot done-dot"></i>All done</span>
+          <span><i class="legend-dot partial-dot"></i>In progress</span>
+          <span><i class="legend-dot empty-dot"></i>Not started</span>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid"
+          aria-label="Monthly calendar"></div>
+
+        <div class="selected-day-box">
+          <div class="selected-day-icon">✿</div>
+          <div>
+            <small>SELECTED DAY</small>
+            <strong id="selectedDateLabel">Choose a date</strong>
+            <p id="selectedDateHint">Select a day to update your habits.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- DAILY CHECKLIST -->
+      <article class="panel daily-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">DAILY CHECK-IN</span>
+            <h2>Today's Focus</h2>
+          </div>
+          <span class="tiny-badge" id="dailyCountBadge">0 of 3</span>
+        </div>
+
+        <p class="panel-description">
+          Choose a date on the calendar, then tick each habit
+          when you complete it.
+        </p>
+
+        <div class="habit-list">
+
+          <label class="habit-item">
+            <span class="habit-symbol symbol-study">✎</span>
+            <span class="habit-text">
+              <b>Study one university topic</b>
+              <small>One focused study block</small>
+            </span>
+            <input type="checkbox" id="task1" class="habit-check"
+              aria-label="Complete university study">
+            <span class="custom-check">✓</span>
+          </label>
+
+          <label class="habit-item">
+            <span class="habit-symbol symbol-phone">⌁</span>
+            <span class="habit-text">
+              <b>Reduce digital distractions</b>
+              <small>Phone away, notifications off</small>
+            </span>
+            <input type="checkbox" id="task2" class="habit-check"
+              aria-label="Complete digital discipline">
+            <span class="custom-check">✓</span>
+          </label>
+
+          <label class="habit-item">
+            <span class="habit-symbol symbol-read">▤</span>
+            <span class="habit-text">
+              <b>Read for 20 minutes</b>
+              <small>Uninterrupted personal reading</small>
+            </span>
+            <input type="checkbox" id="task3" class="habit-check"
+              aria-label="Complete focused reading">
+            <span class="custom-check">✓</span>
+          </label>
+
+        </div>
+
+        <div class="daily-progress">
+          <div>
+            <span>Daily completion</span>
+            <b id="dailyPercent">0%</b>
+          </div>
+          <div class="progress-track">
+            <span id="dailyProgressBar"></span>
+          </div>
+        </div>
+
+        <div id="successMessage" class="success-message"
+          role="status" hidden>
+          Lovely work! All 3 habits completed for this day.
+          Keep protecting your focus!
+        </div>
+      </article>
+
+    </section>
+
+
+    <!-- MONTHLY TRACKER TABLE -->
+    <section class="panel tracker-panel" id="tracker">
+      <div class="panel-heading tracker-heading">
+        <div>
+          <span class="eyebrow">YOUR CONSISTENCY AT A GLANCE</span>
+          <h2>Monthly Task Tracker</h2>
+          <p class="panel-description">
+            Tap ✓ or × to update a task. Select a date to edit it
+            in the daily checklist.
+          </p>
+        </div>
+
+        <button class="soft-button" id="exportCsv">↓ Export CSV</button>
+      </div>
+
+      <div class="table-scroll">
+        <table class="tracker-table">
+          <thead>
+            <tr>
+              <th class="date-column">Date</th>
+              <th><span class="table-task task-a">01</span>University topic</th>
+              <th><span class="table-task task-b">02</span>Digital discipline</th>
+              <th><span class="table-task task-c">03</span>Focused reading</th>
+              <th>Daily total</th>
+            </tr>
+          </thead>
+
+          <tbody id="trackerBody"></tbody>
+
+          <tfoot>
+            <tr>
+              <th>Completion %</th>
+              <td id="taskPercent1">0%</td>
+              <td id="taskPercent2">0%</td>
+              <td id="taskPercent3">0%</td>
+              <td id="tableAverage">0% avg.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="table-footnote">
+        <span>✦</span>
+        Your monthly results update automatically.
+      </div>
+    </section>
+
+
+    <!-- PROGRESS CHART + MONTHLY RATING -->
+    <section class="content-grid progress-grid" id="progress">
+
+      <article class="panel chart-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">MONTHLY BREAKDOWN</span>
+            <h2>Habit Progress</h2>
+          </div>
+          <span class="tiny-badge">Target: 90%</span>
+        </div>
+
+        <p class="panel-description">
+          Compare each habit's completion rate with your 90% benchmark.
+        </p>
+
+        <div id="habitChart" class="habit-chart"
+          aria-label="Bar chart of monthly task progress"></div>
+
+        <div class="benchmark-line-note">
+          <span class="benchmark-dash"></span>
+          90% target benchmark
+        </div>
+      </article>
+
+
+      <article class="panel rating-panel">
+        <span class="eyebrow">YOUR MONTHLY REFLECTION</span>
+        <h2 id="ratingTitle">Every small step counts.</h2>
+
+        <div class="rating-ring" id="ratingRing">
+          <div>
+            <strong id="ratingPercent">0%</strong>
+            <small>average progress</small>
+          </div>
+        </div>
+
+        <span class="rating-label" id="ratingLabel">Ready when you are</span>
+
+        <p id="ratingMessage">
+          Start with one small action today. Progress is built through
+          practice, not perfection.
+        </p>
+
+        <div class="benchmark-comparison">
+          <span>90% target</span>
+          <b id="targetDifference">90% to go</b>
+        </div>
+      </article>
+
+    </section>
+
+
+    <footer class="page-footer">
+      Made with intention <span>♥</span> · Personal Learning Tracker
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
