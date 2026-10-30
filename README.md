@@ -29,7 +29,7 @@ The monthly progress dashboard uses a **90% completion benchmark** to encourage 
 - **HTML5** — Structures the application and its content.
 - **CSS3** — Styles the interface and provides custom visual elements.
 - **Tailwind CSS** — Supports utility-based styling.
-- **JavaScript** — Handles habit tracking, calendar interactions, progress calculations, and CSV export.
+- **JavaScript** — Handles habit tracking, calendar interactions, progress calculations.
 - **Google Fonts** — Uses DM Sans and Plus Jakarta Sans for typography.
 - **Git and GitHub** — Version control and project hosting.
 - **GitHub Pages** — Publishes the application online.
@@ -82,7 +82,6 @@ Personal-Learning-Tracker/
 3. Complete your daily habits by checking the corresponding boxes.
 4. Review your records in the Monthly Task Tracker.
 5. Visit the Progress section to evaluate your monthly performance.
-6. Use **Export CSV** to download your tracking data.
 
 ## 🎯 Project Goal
 
